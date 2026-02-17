@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon, Send } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -31,6 +36,74 @@ const tools = [
   "MS Excel",
   "Industrial Networking Fundamentals",
 ];
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    setSending(true);
+    // Simulate send
+    setTimeout(() => {
+      toast.success("Message sent! Christian will get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+      setSending(false);
+    }, 1000);
+  };
+
+  return (
+    <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
+        <Send size={14} /> Get In Touch
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="text-sm">Name</Label>
+            <Input
+              id="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              maxLength={100}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email" className="text-sm">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="your@email.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              maxLength={255}
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="message" className="text-sm">Message</Label>
+          <Textarea
+            id="message"
+            placeholder="How can Christian help you?"
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            maxLength={1000}
+            rows={4}
+          />
+        </div>
+        <Button type="submit" disabled={sending} className="gap-2">
+          <Send size={16} />
+          {sending ? "Sending..." : "Send Message"}
+        </Button>
+      </form>
+    </motion.section>
+  );
+};
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -186,6 +259,11 @@ const Index = () => {
             ))}
           </div>
         </motion.section>
+
+        <Separator className="mb-6" />
+
+        {/* Contact Form */}
+        <ContactForm />
       </main>
     </div>
   );
