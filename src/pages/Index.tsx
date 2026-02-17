@@ -3,6 +3,12 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
 
 const skills = [
   "AVEVA Wonderware System Platform",
@@ -51,7 +57,7 @@ const Index = () => {
 
       <main className="max-w-3xl mx-auto px-6 py-10 print:py-4 print:px-4">
         {/* Header */}
-        <header className="mb-8">
+        <motion.header className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h1 className="text-4xl font-extrabold tracking-tight text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
             CHRISTIAN T. ESPINOSA
           </h1>
@@ -67,12 +73,12 @@ const Index = () => {
               <Phone size={14} /> 09289258127
             </a>
           </div>
-        </header>
+        </motion.header>
 
         <Separator className="mb-6" />
 
         {/* Professional Profile */}
-        <section className="mb-8">
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Professional Profile</h2>
           <p className="text-sm leading-relaxed text-foreground">
             Automation &amp; Instrumentation Engineer with 9 years of combined field and industrial automation experience spanning beverage manufacturing and semiconductor facilities. Proven expertise in SCADA development, PLC integration, system migration, and plant-level troubleshooting. Strong background in process control interpretation, P&amp;ID analysis, I/O mapping, and control system documentation.
@@ -80,12 +86,12 @@ const Index = () => {
           <p className="text-sm leading-relaxed text-foreground mt-2">
             Led large-scale migration from iFIX to AVEVA System Platform supporting mission-critical semiconductor manufacturing operations.
           </p>
-        </section>
+        </motion.section>
 
         <Separator className="mb-6" />
 
         {/* Core Expertise */}
-        <section className="mb-8">
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Core Expertise</h2>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
@@ -94,12 +100,12 @@ const Index = () => {
               </Badge>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         <Separator className="mb-6" />
 
         {/* Professional Experience */}
-        <section className="mb-8">
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
             <Briefcase size={14} /> Professional Experience
           </h2>
@@ -152,23 +158,23 @@ const Index = () => {
               <li>Assisted in startup, troubleshooting, and plant automation support activities.</li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
         <Separator className="mb-6" />
 
         {/* Education */}
-        <section className="mb-8">
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
             <GraduationCap size={14} /> Education
           </h2>
           <p className="text-sm font-bold text-primary">Bachelor of Science in Instrumentation and Control Engineering</p>
           <p className="text-sm text-muted-foreground">Rizal Technological University, Batch 2013</p>
-        </section>
+        </motion.section>
 
         <Separator className="mb-6" />
 
         {/* Technical Tools */}
-        <section className="mb-8">
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
             <Wrench size={14} /> Technical Tools
           </h2>
@@ -179,7 +185,7 @@ const Index = () => {
               </Badge>
             ))}
           </div>
-        </section>
+        </motion.section>
       </main>
     </div>
   );
