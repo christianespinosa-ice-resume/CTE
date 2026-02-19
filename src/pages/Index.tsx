@@ -9,6 +9,7 @@ import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Mo
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -41,19 +42,25 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
     setSending(true);
-    // Simulate send
-    setTimeout(() => {
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    });
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
+    } else {
       toast.success("Message sent! Christian will get back to you soon.");
       setFormData({ name: "", email: "", message: "" });
-      setSending(false);
-    }, 1000);
+    }
+    setSending(false);
   };
 
   return (
