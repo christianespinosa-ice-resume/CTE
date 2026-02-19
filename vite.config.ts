@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: '/automation-architect/',   
-
+  base: '/automation-architect/',
+  
   server: {
     host: "::",
     port: 8080,
