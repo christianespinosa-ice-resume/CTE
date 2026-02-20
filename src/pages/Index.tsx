@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -139,21 +140,28 @@ const Index = () => {
 
       <main className="max-w-3xl mx-auto px-6 py-10 print:py-4 print:px-4">
         {/* Header */}
-        <motion.header className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-          <h1 className="text-4xl font-extrabold tracking-tight text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
-            CHRISTIAN T. ESPINOSA
-          </h1>
-          <p className="text-lg font-medium text-accent-foreground mt-1" style={{ color: 'hsl(200, 70%, 45%)' }}>
-            Plant Automation &amp; SCADA Engineer
-          </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1.5"><MapPin size={14} /> Pasig City, Philippines</span>
-            <a href="mailto:christian.t.espinosa@gmail.com" className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <Mail size={14} /> christian.t.espinosa@gmail.com
-            </a>
-            <a href="tel:09289258127" className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <Phone size={14} /> 09289258127
-            </a>
+        <motion.header className="mb-8 flex flex-col sm:flex-row items-start gap-6" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+          <img
+            src={profilePhoto}
+            alt="Christian T. Espinosa"
+            className="w-28 h-28 rounded-full object-cover object-top border-2 border-primary/20 shadow-md shrink-0"
+          />
+          <div>
+            <h1 className="text-4xl font-extrabold tracking-tight text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
+              CHRISTIAN T. ESPINOSA
+            </h1>
+            <p className="text-lg font-medium text-accent-foreground mt-1" style={{ color: 'hsl(200, 70%, 45%)' }}>
+              Plant Automation &amp; SCADA Engineer
+            </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5"><MapPin size={14} /> Pasig City, Philippines</span>
+              <a href="mailto:christian.t.espinosa@gmail.com" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                <Mail size={14} /> christian.t.espinosa@gmail.com
+              </a>
+              <a href="tel:09289258127" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                <Phone size={14} /> 09289258127
+              </a>
+            </div>
           </div>
         </motion.header>
 
