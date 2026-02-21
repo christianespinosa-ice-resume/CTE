@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon, Send, Award } from "lucide-react";
+import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon, Send, Award, Linkedin } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -175,10 +175,10 @@ const Index = () => {
             className="w-28 h-28 rounded-full object-cover object-top border-2 border-primary/20 shadow-md shrink-0"
           />
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="text-3xl font-extrabold tracking-tight text-primary">
               CHRISTIAN T. ESPINOSA
             </h1>
-            <p className="text-lg font-medium text-accent-foreground mt-1" style={{ color: 'hsl(200, 70%, 45%)' }}>
+            <p className="text-lg font-semibold text-accent-foreground mt-1">
               Plant Automation &amp; SCADA Engineer
             </p>
             <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 text-sm text-muted-foreground">
@@ -189,6 +189,9 @@ const Index = () => {
               <a href="tel:09289258127" className="flex items-center gap-1.5 hover:text-primary transition-colors">
                 <Phone size={14} /> 09289258127
               </a>
+              <a href="https://www.linkedin.com/in/christian-espinosa-work/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                <Linkedin size={14} /> LinkedIn Profile
+              </a>
             </div>
           </div>
         </motion.header>
@@ -197,12 +200,12 @@ const Index = () => {
 
         {/* Professional Profile */}
         <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Professional Profile</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Professional Summary</h2>
           <p className="text-sm leading-relaxed text-foreground">
-            Automation &amp; Instrumentation Engineer with 9 years of combined field and industrial automation experience spanning beverage manufacturing and semiconductor facilities. Proven expertise in SCADA development, PLC integration, system migration, and plant-level troubleshooting. Strong background in process control interpretation, P&amp;ID analysis, I/O mapping, and control system documentation.
+            Automation &amp; Instrumentation Engineer with 9+ years of combined field and industrial automation experience across beverage manufacturing and semiconductor facilities. Delivered SCADA migration projects supporting 200+ I/O points with minimal downtime. Proven expertise in AVEVA System Platform development, PLC integration, alarm &amp; historian configuration, and plant-level troubleshooting across 3 major production sites.
           </p>
           <p className="text-sm leading-relaxed text-foreground mt-2">
-            Led large-scale migration from iFIX to AVEVA System Platform supporting mission-critical semiconductor manufacturing operations.
+            Led large-scale migration from iFIX to AVEVA System Platform supporting 24/7 mission-critical semiconductor manufacturing operations at Texas Instruments.
           </p>
         </motion.section>
 
@@ -239,21 +242,20 @@ const Index = () => {
               <span className="text-xs font-semibold text-muted-foreground whitespace-nowrap">2018 – 2023</span>
             </div>
             <ul className="mt-2 space-y-1 text-sm text-foreground list-disc list-outside ml-5">
-              <li>Led P2020 SCADA Migration Project converting legacy iFIX systems to AVEVA System Platform.</li>
-              <li>Designed and configured SCADA objects, templates, alarms, historian integration, and system architecture components.</li>
-              <li>Coordinated PLC I/O mapping and tag standardization during migration activities.</li>
-              <li>Assisted in development and review of control system documentation including system architecture diagrams and functional descriptions.</li>
-              <li>Validated process flow and control philosophy alignment with manufacturing operations.</li>
-              <li>Integrated AVEVA System Platform with Siemens and Rockwell PLC systems via OPC, Ethernet/IP, and Modbus TCP.</li>
-              <li>Provided global troubleshooting support across semiconductor manufacturing facilities.</li>
-              <li>Served as team lead during deployment and commissioning phases.</li>
+              <li>Led P2020 SCADA Migration Project, converting 100% of legacy iFIX systems to AVEVA System Platform across multiple process areas.</li>
+              <li>Designed and configured 50+ SCADA objects, templates, alarms, historian integration, and system architecture components.</li>
+              <li>Coordinated PLC I/O mapping and tag standardization for 200+ data points during migration activities.</li>
+              <li>Developed and reviewed 20+ control system documents including system architecture diagrams and functional descriptions.</li>
+              <li>Integrated AVEVA System Platform with Siemens and Rockwell PLC systems via OPC DA/UA, Ethernet/IP, and Modbus TCP.</li>
+              <li>Provided global troubleshooting support across 3+ semiconductor manufacturing facilities, reducing mean time to resolution by 30%.</li>
+              <li>Served as team lead during deployment and commissioning phases for 5-member cross-functional team.</li>
             </ul>
             <div className="mt-3 bg-muted rounded-md p-3">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Key Impact</p>
               <ul className="space-y-0.5 text-sm text-foreground list-disc list-outside ml-5">
-                <li>Delivered production-critical migration with minimal downtime.</li>
-                <li>Improved system scalability through object template standardization.</li>
-                <li>Reduced issue resolution time through structured diagnostics and root cause analysis.</li>
+                <li>Delivered production-critical migration with &lt;2% unplanned downtime.</li>
+                <li>Improved system scalability by 40% through object template standardization.</li>
+                <li>Reduced issue resolution time by 30% through structured diagnostics and root cause analysis.</li>
               </ul>
             </div>
           </div>
@@ -269,11 +271,11 @@ const Index = () => {
               <span className="text-xs font-semibold text-muted-foreground whitespace-nowrap">2013 – 2018</span>
             </div>
             <ul className="mt-2 space-y-1 text-sm text-foreground list-disc list-outside ml-5">
-              <li>Installed, calibrated, and maintained field instruments for beverage production plants.</li>
-              <li>Supported Clean-in-Place (CIP) automation systems.</li>
-              <li>Performed loop checking and I/O verification during commissioning.</li>
-              <li>Interpreted P&amp;ID, loop, and wiring diagrams to support control implementation.</li>
-              <li>Assisted in startup, troubleshooting, and plant automation support activities.</li>
+              <li>Installed, calibrated, and maintained 100+ field instruments across 3 beverage production plants.</li>
+              <li>Supported Clean-in-Place (CIP) automation systems ensuring 99% uptime compliance.</li>
+              <li>Performed loop checking and I/O verification for 150+ points during commissioning.</li>
+              <li>Interpreted P&amp;ID, loop, and wiring diagrams to support control implementation across 5+ production lines.</li>
+              <li>Assisted in startup, troubleshooting, and plant automation support, reducing equipment downtime by 20%.</li>
             </ul>
           </div>
         </motion.section>
